@@ -1,4 +1,3 @@
-#include <chrono>
 #include <random>
 #include <iostream>
 #include <iomanip>
@@ -6,7 +5,7 @@
 using namespace std;
 
 // function prototypes
-int rand(int l, int h);
+int random(int l, int h);
 void monty_hall(int& stay_wins, int& swap_wins);
 void simulate(int num_iterations);
 
@@ -51,11 +50,9 @@ void monty_hall(int& stay_wins, int& swap_wins) {
   // creates an array to store the door values
   bool doors[3];
 
-  // selects a random number(door) to put the car behind
-  mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-
   // get random number (index) to select which door the car(true) is behind
-  int rand_door = rand(0, 2);
+  int rand_door = random(0, 2);
+  
   // loads the array with either true (car) or false (goat)
   for(int i = 0; i < 3; i++) {
     if (i == rand_door)
@@ -80,11 +77,6 @@ void monty_hall(int& stay_wins, int& swap_wins) {
 }
 
 
-int rand(int l, int h){
-  // uses cpu clock to make the number more random
-  static mt19937 
-  rng(chrono::steady_clock::now().time_since_epoch().count());
-  // generate random number and return it
-  uniform_int_distribution<int> ludo(l, h);
-  return ludo(rng);
+int random(int l, int h){
+  return (rand() % (h + 1) ) + l;
 }

@@ -9,6 +9,7 @@ int random(int l, int h);
 void monty_hall(int& stay_wins, int& swap_wins);
 void simulate(int num_iterations);
 
+
 int main() {
   // get number of runs to perform from user
   int num_iterations = 0;
@@ -20,6 +21,7 @@ int main() {
   
   return 0;
 }
+
 
 void simulate(int num_iterations) {
   // varible to store number of wins for both swap and stay strategies
@@ -45,6 +47,7 @@ void simulate(int num_iterations) {
        <<"\n\tStay wins: " << stay_wins << "\tPrecentage: " << stay_percent << "%" << endl;
 }
 
+
 void monty_hall(int& stay_wins, int& swap_wins) {
   // a true represents a car/win, a false represents a goat/loss
   // creates an array to store the door values
@@ -61,7 +64,8 @@ void monty_hall(int& stay_wins, int& swap_wins) {
       doors[i] = false;
   }
 
-  /* We will assume that the user always selects the first door, index 0.
+  /* 
+     We will assume that the user always selects the first door, index 0.
      Now, reguardless of which door is opened to reveal a goat, what is
      behind the first door does not change. If the car is behind the first
      door, then either way, we would win by staying; in any other case, we
@@ -77,6 +81,10 @@ void monty_hall(int& stay_wins, int& swap_wins) {
 }
 
 
+//
 int random(int l, int h){
+  /*
+    returns a random integer between the lower and the higher bound, not including the higher bound
+  */
   return (rand() % (h + 1) ) + l;
 }
